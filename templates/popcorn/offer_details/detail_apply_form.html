@@ -1,0 +1,60 @@
+<!-- Apply for a job popup -->
+<div id="small-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+  <div class="utf-signin-form-part">
+    <ul class="utf-popup-tabs-nav-item">
+		<li class="modal-title">Apply for This Position</li>
+	</ul>
+    <div class="utf-popup-container-part-tabs">
+
+      <div class="utf-popup-tab-content-item" id="tab">
+        <div id="response-div" class="notification error closeable"></div>
+        <div id="response-success-div" class="notification success closeable"></div>
+        <form id="apply_now_form" method="post">
+            {% csrf_token %}
+            <div class="utf-no-border margin-bottom-18">
+              <input type="text" class="utf-with-border" name="{{ offer_applyForm.offer_selected.name }}" id="id_{{ offer_applyForm.offer_selected.name }}" value="{{ offer_detail.id }}" readonly />
+            </div>
+            <div class="utf-no-border">
+                <input type="text" class="utf-with-border" name="{{ offer_applyForm.offer_name.name }}" id="offer_name" placeholder="" value="{{ offer_detail.offer_name }}" readonly />
+            </div>
+
+		    <div class="utf-no-border">
+            {{ offer_applyForm.first_name }}
+            </div>
+
+            <div class="utf-no-border">
+            {{ offer_applyForm.last_name }}
+          </div>
+
+		  <div class="utf-no-border">
+            <input type="text" class="utf-with-border" name="{{ offer_applyForm.phone_number.name }}" id="user_phone_number" placeholder="Phone Number* Ex. (+1 590 590 6590)" required/>
+          </div>
+
+		  <div class="utf-no-border">
+                  <input type="email" class="utf-with-border" name="{{ offer_applyForm.email.name }}" id="email" value="{{ user.email }}" placeholder="Email Address*" readonly/>
+          </div>
+            <div class="utf-no-border">
+                  <input type="text" class="utf-with-border" name="{{ offer_applyForm.user_who_applied.name }}" value="{{ current_user }}" readonly/>
+          </div>
+{#            <div class="utf-no-border">#}
+{#                {{ offer_applyForm.applied_offer }}#}
+{#            </div>#}
+{#          <div class="uploadButton">#}
+{#            <input class="uploadButton-input" type="file" name="{{ offer_applyForm.user_resume.name }}" accept="image/*, application/pdf" id="id_user_resume" />#}
+{#            <label class="uploadButton-button ripple-effect" for="id_user_resume">Upload Resume</label>#}
+{#            <span class="uploadButton-file-name">Upload Resume (Docx, Doc, PDF) File.</span>#}
+{#		  </div>#}
+            <button type="submit" class="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Submit Resume & Apply <i class="icon-feather-chevrons-right"></i></button>
+        </form>
+{#        <button class="button margin-top-25 full-width utf-button-sliding-icon ripple-effect" type="submit" form="apply-now-form">Apply Now <i class="icon-feather-chevrons-right"></i></button>#}
+		<p class="margin-top-15">You can apply to this intern job and others using your online resume.
+            Upload your resume after this submit</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Apply for a job popup / End -->
+
+

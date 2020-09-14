@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+    {% block title %}Popcorn | Homepage {% endblock %}
+
+    {% block content %}
+{#        {% include 'popcorn/header/navbar.html' %}#}
+        {% include 'popcorn/header/intro_banner.html' %}
+        {% include 'popcorn/category/job_category.html' %}
+        {% include 'popcorn/category/latest_job.html' %}
+        {% include 'popcorn/category/photo_section.html' %}
+        {% include 'popcorn/category/testimonial.html' %}
+        {% include 'popcorn/category/callout_section.html' %}
+        {% include 'popcorn/category/help_section.html' %}
+        {% include 'popcorn/category/counters_section.html' %}
+        {% include 'popcorn/category/subscribe_section.html' %}
+        {% include 'popcorn/category/footer.html' %}
+{#        {% include 'account/register_login_popup.html' %}#}
+
+
+    {% endblock %}

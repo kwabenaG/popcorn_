@@ -1,0 +1,39 @@
+
+{% load static %}
+
+<!-- Titlebar -->
+  <div class="single-page-header" data-background-image="images/single-job.jpg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="utf-single-page-header-inner-aera">
+            <div class="utf-left-side">
+              <div class="utf-header-image"><a href="single-company-profile.html"><img src="images/company_logo_1.png" alt=""></a></div>
+              <div class="utf-header-details">
+				<span class="dashboard-status-button utf-job-status-item green"><i class="icon-material-outline-business-center"></i> Full Time</span>
+				<ul>
+                  <li>{{ offer_detail.offer_location }}</li>
+                </ul>
+                <h3>{{ offer_detail.offer_name}}<span class="utf-verified-badge" title="Verified" data-tippy-placement="top"></span></h3>
+                <h5><i class="icon-material-outline-business-center"></i> {{ offer_detail.offer_name }}</h5>
+				<div class="utf-star-rating" data-rating="3"></div>
+              </div>
+            </div>
+            <div class="utf-right-side">
+              <div class="salary-box">
+                {% if user.is_anonymous %}
+                    <a class="apply-now-button popup-with-zoom-anim margin-top-0" data-toggle="tooltip" title="Disabled. Please sign in to activate apply button">Apply For Job <i class="icon-feather-chevrons-right"></i></a>
+                {% elif not user.is_anonymous and user.applied_offer == 1 %}
+                    <a href="#small-dialog" class="apply-now-button popup-with-zoom-anim margin-top-0">Applied Already <i class="icon-feather-chevrons-right"></i></a>
+                {% else %}
+                    <a href="#small-dialog" class="apply-now-button popup-with-zoom-anim margin-top-0">Apply For Job <i class="icon-feather-chevrons-right"></i></a>
+                {% endif %}
+
+{#				<a href="#" class="button save-job-btn margin-top-20">Save For Jobs <i class="icon-feather-chevrons-right"></i></a>#}
+			  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="author" content="">
+<meta name="description" content="">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}{% endblock %}</title>
+
+<!--  Favicon -->
+<link rel="shortcut icon" href="{% static 'popcorn/images/favicon.png' %}">
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'popcorn/css/bootstrap-grid.css' %}">
+<link rel="stylesheet" href="{% static 'popcorn/css/icons.css' %}">
+<link rel="stylesheet" href="{% static 'popcorn/css/style.css' %}">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    
+    <!-- Wrapper -->
+    <div id="wrapper">
+        {% include 'popcorn/header/navbar_account.html' %}{# header navbar #}
+            {% block content %}
+
+            {% endblock %}
+{#        {% include 'account/register_login_popup.html' %}#}
+    </div>
+
+
+
+
+
+    <!-- Scripts -->
+    <script src="{% static 'popcorn/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/mmenu.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/tippy.all.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/simplebar.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/bootstrap-slider.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/snackbar.js' %}"></script>
+    <script src="{% static 'popcorn/js/clipboard.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/counterup.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/magnific-popup.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/slick.min.js' %}"></script>
+
+
+</body>
+</html>

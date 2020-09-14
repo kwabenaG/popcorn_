@@ -1,0 +1,118 @@
+{% load static %}
+
+<!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 col-lg-8 utf-content-right-offset-aera">
+      {% include 'messages/messages_success.html' %}
+        <div class="utf-single-page-section-aera">
+		  <div class="job-description-image-aera">
+			  <img src="images/job-detail-inner.png" alt="" />
+		  </div>
+
+		  <div class="utf-boxed-list-headline-item">
+            <h3><i class="icon-material-outline-description"></i> Jobs Description</h3>
+          </div>
+          <p>{{ offer_detail.offer_description }}</p>
+		  <ul class="utf-job-deatails-content-item margin-bottom-30">
+			<li><i class="icon-feather-arrow-right"></i> Morbi mattis ullamcorper velit. Phasellus gravida semper nisi nullam vel sem.</li>
+
+		  </ul>
+		  <div class="row">
+			<div class="col-xl-6 col-lg-6 col-sm-12">
+                {% if user.is_anonymous %}
+				    <a class="apply-now-button popup-with-zoom-anim margin-top-0" data-toggle="tooltip" title="Disabled. Please sign in to activate apply button">Apply Now <i class="icon-feather-chevrons-right"></i></a>
+                    {% else %}
+                    <a href="#small-dialog" class="apply-now-button popup-with-zoom-anim margin-top-0">Apply Now <i class="icon-feather-chevrons-right"></i></a>
+                {% endif %}
+			</div>
+			<div class="col-xl-6 col-lg-6 col-sm-12">
+				<a href="#small-dialog-1" class="button save-job-btn popup-with-zoom-anim">Get Job Alerts <i class="icon-feather-chevrons-right"></i></a>
+			</div>
+		  </div>
+		  <div class="utf-detail-social-sharing margin-top-25">
+			<span><strong>Social Sharing:-</strong></span>
+			<ul class="margin-top-15">
+				<li><a href="#" title="Facebook" data-tippy-placement="top"><i class="icon-brand-facebook-f"></i></a></li>
+				<li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+				<li><a href="#" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin-in"></i></a></li>
+				<li><a href="#" title="Google Plus" data-tippy-placement="top"><i class="icon-brand-google-plus-g"></i></a></li>
+				<li><a href="#" title="Whatsapp" data-tippy-placement="top"><i class="icon-brand-whatsapp"></i></a></li>
+				<li><a href="#" title="Pinterest" data-tippy-placement="top"><i class="icon-brand-pinterest-p"></i></a></li>
+			</ul>
+		  </div>
+        </div>
+
+		<div class="utf-single-page-section-aera">
+		  <div class="utf-boxed-list-headline-item">
+            <h3><i class="icon-feather-briefcase"></i> Education Qualification</h3>
+          </div>
+          <p>Below are the skills required</p>
+		  <ul class="utf-job-deatails-content-item">
+			<li><i class="icon-feather-arrow-right"></i>{{ offer_detail.skill_qualified }}</li>
+		  </ul>
+        </div>
+
+		<div class="utf-single-page-section-aera">
+		  <div class="utf-boxed-list-headline-item">
+            <h3><i class="icon-material-outline-business-center"></i> Required Skills and Abilities</h3>
+          </div>
+          <ul class="utf-job-deatails-content-item">
+{#              {% for skill in skills %}#}
+			    <li><i class="icon-feather-arrow-right"></i></li>
+{#              {% endfor %}#}
+		  </ul>
+        </div>
+
+{#		<div class="utf-single-page-section-aera">#}
+{#		  <div class="utf-boxed-list-headline-item">#}
+{#            <h3><i class="icon-material-outline-business-center"></i> Primary Responsibilities</h3>#}
+{#          </div>#}
+{#          <ul class="utf-job-deatails-content-item">#}
+{#			<li><i class="icon-feather-arrow-right"></i> HTML, CSS & Scss</li>#}
+{#			<li><i class="icon-feather-arrow-right"></i> Javascript</li>#}
+{#			<li><i class="icon-feather-arrow-right"></i> PHP Developer</li>#}
+{#			<li><i class="icon-feather-arrow-right"></i> Photoshop</li>#}
+{#			<li><i class="icon-feather-arrow-right"></i> Illustrator</li>#}
+{#		  </ul>#}
+{#        </div>#}
+
+{#        <div class="utf-single-page-section-aera">#}
+{#		  <div class="utf-boxed-list-headline-item">#}
+{#            <h3><i class="icon-material-outline-location-on"></i> Jobs Location</h3>#}
+{#          </div>#}
+{#          <div id="utf-single-job-map-container-item">#}
+{#            <div id="singleListingMap" data-latitude="48.8566" data-longitude="2.3522" data-map-icon="im im-icon-Hamburger"></div>#}
+{#		  </div>#}
+{#        </div>#}
+
+		<div class="utf-boxed-list-item margin-bottom-60">
+          <div class="utf-boxed-list-headline-item">
+            <h3><i class="icon-material-outline-business-center"></i> People Also Viewed</h3>
+          </div>
+          <div class="utf-listings-container-part compact-list-layout">
+            {% for job_views in jobs_viewed %}
+                <a href="#" class="utf-job-listing">
+                    <div class="utf-job-listing-details">
+                      <div class="utf-job-listing-company-logo"> <img src="{% static 'popcorn/images/company_logo_1.png' %}" alt=""> </div>
+                      <div class="utf-job-listing-description">
+                        <span class="dashboard-status-button utf-job-status-item green"><i class="icon-material-outline-business-center"></i> {{ job_views.offer_type }}</span>
+                        <h3 class="utf-job-listing-title">{{ job_views.offer_job_name }}</h3>
+                        <div class="utf-job-listing-footer">
+                          <ul>
+                            <li><i class="icon-feather-briefcase"></i> Software Developer</li>
+                            <li><i class="icon-material-outline-account-balance-wallet"></i> {{ job_views.offer_min_max_limit }} openings</li>
+                            <li><i class="icon-material-outline-location-on"></i> {{ job_views.offer_location }}</li>
+                            <li><i class="icon-material-outline-access-time"></i> {{ job_views.offer_date_created  }}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="bookmark-icon"></span>
+                </a>
+              {% endfor %}
+
+		  </div>
+		  <div class="utf-centered-button margin-top-10"> <a href="jobs-list-layout-leftside.html" class="button utf-button-sliding-icon">View More Jobs <i class="icon-feather-chevrons-right"></i></a> </div>
+        </div>
+      </div>

@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="author" content="">
+<meta name="description" content="">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}{% endblock %}</title>
+
+<!--  Favicon -->
+<link rel="shortcut icon" href="{% static 'popcorn/images/favicon.png' %}">
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'popcorn/css/bootstrap-grid.css' %}">
+<link rel="stylesheet" href="{% static 'popcorn/css/icons.css' %}">
+<link rel="stylesheet" href="{% static 'popcorn/css/style.css' %}">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--Loader-->
+    <div class="vfx-loader">
+        <div class="loader-wrapper">
+            <div class="loader-content">
+                <div class="loader-dot dot-1"></div>
+                <div class="loader-dot dot-2"></div>
+                <div class="loader-dot dot-3"></div>
+                <div class="loader-dot dot-4"></div>
+                <div class="loader-dot dot-5"></div>
+                <div class="loader-dot dot-6"></div>
+                <div class="loader-dot dot-7"></div>
+                <div class="loader-dot dot-8"></div>
+                <div class="loader-dot dot-center"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader end -->
+    <!-- Wrapper -->
+    <div id="wrapper">
+        {% include 'popcorn_dashboard/d_navbar/d_navbar.html' %}{# header navbar #}
+        {% include 'popcorn_dashboard/d_sidebar/d_sidebar.html' %}{# d side bar #}
+            {% block content %}
+
+            {% endblock %}
+    </div>
+    <!--Wrapper-->
+    <!-- Scripts -->
+    <script src="{% static 'popcorn/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/mmenu.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/tippy.all.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/simplebar.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/bootstrap-slider.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/snackbar.js' %}"></script>
+    <script src="{% static 'popcorn/js/clipboard.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/counterup.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/magnific-popup.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/slick.min.js' %}"></script>
+    <script src="{% static 'popcorn/js/typed.js' %}"></script>
+    <script src="{% static 'popcorn/js/custom_jquery.js' %}"></script>
+
+    <script src="{% static 'popcorn/js/chart.min.js' %}"></script>
+    <script>
+    Chart.defaults.global.defaultFontFamily = "Nunito";
+
+    var config = {
+        type: 'line',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: "View User",
+                backgroundColor: 'rgba(255,138,0,0.08)',
+                borderColor: '#ff8a00',
+                borderWidth: "3",
+                data: [799,630,636,644,722,680,799,722,836,644,722,780],
+                pointRadius: 4,
+                titleFontSize: 18,
+                pointHoverRadius: 4,
+                pointHitRadius: 10,
+                pointBackgroundColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointBorderWidth: "3",
+            }]
+        },
+        options: {
+            responsive: true,
+            tooltips: {
+              backgroundColor: '#333',
+              titleFontSize: 15,
+              titleFontColor: '#fff',
+              bodyFontColor: '#fff',
+              bodyFontSize: 13,
+              displayColors: false,
+              xPadding: 10,
+              yPadding: 10,
+              intersect: false
+            },
+
+            legend: { display: false },
+            title:  { display: false },
+
+            scales: {
+                x: {
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                },
+                y: {
+                    type: 'category',
+                    position: 'left',
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Request State'
+                    },
+                    reverse: true
+                }
+            }
+        }
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myLine = new Chart(ctx, config);
+    };
+    </script>
+</body>
+</html>

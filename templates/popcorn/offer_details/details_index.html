@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% load sweetify %}
+{% sweetify %}
+
+{% block title %}
+Offer Details | Popcorn
+{% endblock %}
+
+{% block custom_style %}
+    <style>
+        .error_response_before, .success_response_before {
+            display:none;
+        }
+        .error_response_after, .success_response_after {
+            display: inline-block;
+            position:relative;
+            {#color:blue;#}
+        }
+        .errorlist{
+            list-style: none;
+            display: inline-block;
+            position: relative;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% include 'popcorn/offer_details/detail_title.html' %}
+    {% include 'popcorn/offer_details/detail_page_content.html' %}
+    {% include 'popcorn/offer_details/detail_sidebar.html' %}
+    {% include 'popcorn/offer_details/detail_apply_form.html' %}
+    {% include 'popcorn/offer_details/get_more_info_form.html' %}
+    {#  footer #}
+    {% include 'popcorn/category/footer.html' %}
+
+{% endblock %}
+
+{% block ajax_script %}
+    {# send ofer script #}
+    <script type="text/javascript">
+        {# responsible ajax call for apply form #}
+        let error_div_bfr = document.getElementById('response-div');
+        let success_div_bfr = document.getElementById('response-success-div');
+
+        error_div_bfr.classList.add('error_response_before');
+        success_div_bfr.classList.add('success_response_before');
+
+        const apply_form = document.getElementById('apply_now_form');
+        apply_form.addEventListener('submit', sendOfferForm);
+
+        function sendOfferForm(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'request_offer_send' %}',
+                data: $('#apply_now_form').serialize(),
+                dataType: 'json',
+                success: successHandler, //success callback function
+                })
+        }
+            {#callback handler#}
+        function successHandler(json, status) {
+            let error_div = document.getElementById('response-div');
+            let success_div = document.getElementById('response-success-div');
+            if (json.error_msg) {
+                error_div.classList.add('error_response_after');
+                $('#response-div').html(json.error_msg);
+            }
+            else {
+                document.getElementById('response-div').classList.remove('error_response_after');
+                success_div.classList.add('success_response_after');
+                $('#response-success-div').html(json.success_message);
+                setTimeout( function(){
+                    document.getElementById('apply_now_form').reset();
+                    location.reload();
+                }, 3000);
+
+            }
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        {# get latest info #}
+        let error_div_bfr_alert = document.getElementById('div-alert-error');
+        let success_div_bfr_alert = document.getElementById('div-alert-success');
+
+        error_div_bfr_alert.classList.add('error_response_before');
+        success_div_bfr_alert.classList.add('success_response_before');
+
+        const job_alerts = document.getElementById('job_alert_form');
+        job_alerts.addEventListener('submit', jobAlertForm1);
+
+        function jobAlertForm1(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url 'job-alerts' %}',
+                data: $('#job_alert_form').serialize(),
+                dataType: 'json',
+                success: successHandlerAlert, //success callback function
+                })
+        }
+            {#callback handler#}
+        function successHandlerAlert(json, status) {
+            let error_div = document.getElementById('div-alert-error');
+            let success_div = document.getElementById('div-alert-success');
+            if (json.error_msg_alert) {
+                error_div.classList.add('error_response_after');
+                {#document.('full_name').focus()#}
+                $('#div-alert-error').html(json.error_msg_alert);
+            }else {
+                document.getElementById('div-alert-error').classList.remove('error_response_after');
+                success_div.classList.add('success_response_after');
+                $('#div-alert-success').html(json.success_msg_alert);
+                setTimeout( function(){
+                    document.getElementById('job_alert_form').reset();
+                    location.reload();
+                }, 2000);
+
+            }
+        }
+    </script>
+{% endblock %}

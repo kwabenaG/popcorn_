@@ -1,0 +1,67 @@
+{% load static %}
+<!-- Latest Jobs -->
+  <div class="section gray padding-top-60 padding-bottom-60">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="utf-section-headline-item centered margin-top-0 margin-bottom-40">
+            <span>Latest Jobs Post</span>
+			<h3>Jobs You May Be Interested</h3>
+			<div class="utf-headline-display-inner-item">Latest Jobs Post</div>
+			<p class="utf-slogan-text">Lorem Ipsum is simply dummy text printing and type setting industry Lorem Ipsum been industry standard dummy text ever since when unknown printer took a galley.</p>
+          </div>
+          <div class="utf-listings-container-part compact-list-layout margin-top-35">
+
+              {% for latest_offer in all_offers %} {# loop all job offers #}
+{#                  {% if latest_offer  %} {# checks for emptiness #}
+{#                      <a href="" class="utf-job-listing utf-apply-button-item">#}
+{#                            <div class="utf-job-listing-details">#}
+{#                              <div class="utf-job-listing-company-logo"> <img src="{% static 'popcorn/images/company_logo_1.png' %}" alt=""> </div>#}
+{#                              <div class="utf-job-listing-description">#}
+{#                                <span class="dashboard-status-button utf-job-status-item green"><i class="icon-material-outline-business-center"></i></span>#}
+{#                                <h3 class="utf-job-listing-title">No Openings yet</h3>#}
+{#                                <div class="utf-job-listing-footer">#}
+{#                                  <ul>#}
+{#                                    <li><i class="icon-feather-briefcase"></i> Graphic Designer</li>#}
+{#                                      <li><i class="icon-feather-briefcase"></i> {% if latest_offer.offer_status == 1%} {{ 'available' }} {% else%} {{ 'unvailable' }}{% endif %}</li>#}
+{#                                    <li><i class="icon-material-outline-account-balance-wallet"></i> {{ latest_offer.offer_min_max_limit }} openings</li>#}
+{#                                    <li><i class="icon-material-outline-location-on"></i> {{ latest_offer.offer_location }}</li>#}
+{#                                    <li><i class="icon-material-outline-access-time"></i> {{ latest_offer.offer_date_created }}</li>#}
+{#                                  </ul>#}
+{#                                </div>#}
+{#                              </div>#}
+{#                              <span class="list-apply-button ripple-effect">Browse Joba <i class="icon-line-awesome-bullhorn"></i></span>#}
+{#                            </div>#}
+{#                      </a>#}
+{#                  {% else %}#}
+                    <a href="{% url 'page-offers-details' offer_type_id=latest_offer.id %}" class="utf-job-listing utf-apply-button-item">
+                        <div class="utf-job-listing-details">
+                          <div class="utf-job-listing-company-logo"> <img src="{% static 'popcorn/images/company_logo_1.png' %}" alt=""> </div>
+                          <div class="utf-job-listing-description">
+                            <span class="dashboard-status-button utf-job-status-item green"><i class="icon-material-outline-business-center"></i> {{ latest_offer.offer_type }}</span>
+                            <h3 class="utf-job-listing-title">{{ latest_offer.offer_name }}</h3>
+                            <div class="utf-job-listing-footer">
+                              <ul>
+                                <li><i class="icon-feather-briefcase"></i> Graphic Designer</li>
+                                  <li><i class="icon-feather-briefcase"></i> {% if latest_offer.offer_status == 1%} {{ 'available' }} {% else%} {{ 'unvailable' }}{% endif %}</li>
+                                <li><i class="icon-material-outline-account-balance-wallet"></i> {{ latest_offer.offer_min_max_limit }} openings</li>
+                                <li><i class="icon-material-outline-location-on"></i> {{ latest_offer.offer_location }}</li>
+                                <li><i class="icon-material-outline-access-time"></i> {{ latest_offer.offer_date_created }}</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <span class="list-apply-button ripple-effect">Browse Job <i class="icon-line-awesome-bullhorn"></i></span>
+                        </div>
+                    </a>
+{#                  {% endif %}#}
+              {% endfor %}
+
+		  </div>
+		  <div class="utf-centered-button margin-top-10">
+			<a href="jobs-list-layout-leftside.html" class="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-20">Browse All Jobs <i class="icon-feather-chevrons-right"></i></a>
+		  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Latest Jobs / End -->

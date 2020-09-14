@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+    <div class="main-wrapper">
+        <div class="account-page">
+            <div class="container">
+                <h3 class="account-title">Confirm Logout</h3>
+                <div class="account-box">
+                    <div class="account-wrapper">
+                        <div class="account-logo">
+                            <a href="#"><img src="{% static 'img/logo2.png' %}" alt="hooks "></a>
+                        </div>
+                        <form action="{% url 'account_logout' %}" method="post">
+                             {% csrf_token %}
+                            <div class="form-group ">
+                                <label class="control-label"> Are you sure you want to sign out?</label>
+                            </div>
+                            {% if redirect_field_value %}
+                                <div class="form-group form-focus">
+                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                                </div>
+                            {% endif %}
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary btn-block account-btn" type="submit">Sign Out</button>
+                            </div>
+{#                            <div class="text-center">#}
+{#                                <a href="#">Back</a>#}
+{#                            </div>#}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

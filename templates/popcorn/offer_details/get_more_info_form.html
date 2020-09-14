@@ -1,0 +1,31 @@
+
+<!-- Apply for a job popup -->
+<div id="small-dialog-1" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+  <div class="utf-signin-form-part">
+    <ul class="utf-popup-tabs-nav-item">
+		<li class="modal-title">Get Intern/ Attachments Alerts</li>
+	</ul>
+    <div class="utf-popup-container-part-tabs">
+
+      <div class="utf-popup-tab-content-item" id="tab">
+        <div id="div-alert-error" class="notification error closeable"></div>
+        <div id="div-alert-success" class="notification success closeable"></div>
+        <form id="job_alert_form" method="post" >
+            {% csrf_token %}
+            <div class="utf-no-border margin-bottom-18">
+                {{ job_alerts.full_name }}
+            </div>
+            <div class="utf-no-border">
+                {{ job_alerts.email}}
+            </div>
+            <button type="submit" class="button utf-ripple-effect-dark utf-button-sliding-icon margin-top-10">Alert Me ! <i class="icon-feather-chevrons-right"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Apply for a job popup / End -->
+
+

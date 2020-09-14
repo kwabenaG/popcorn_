@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--  Favicon -->
+    <link rel="shortcut icon" href="{% static 'popcorn/images/favicon.png' %}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'popcorn/css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'popcorn/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'popcorn/css/style.css' %}">
+
+    {% block custom_style %}{% endblock %}
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+<!--Loader-->
+<div class="vfx-loader">
+	<div class="loader-wrapper">
+		<div class="loader-content">
+			<div class="loader-dot dot-1"></div>
+			<div class="loader-dot dot-2"></div>
+			<div class="loader-dot dot-3"></div>
+			<div class="loader-dot dot-4"></div>
+			<div class="loader-dot dot-5"></div>
+			<div class="loader-dot dot-6"></div>
+			<div class="loader-dot dot-7"></div>
+			<div class="loader-dot dot-8"></div>
+			<div class="loader-dot dot-center"></div>
+		</div>
+	</div>
+</div>
+<!-- Loader end -->
+    <!-- Wrapper -->
+    <div id="wrapper">
+        {% include 'popcorn/header/navbar.html' %}{# header navbar #}
+            {% block content %}
+            {% endblock %}
+        {% include 'account/register_login_popup.html' %}
+    </div>
+
+<!-- Scripts -->
+
+<script src="{% static 'popcorn/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'popcorn/js/jquery-migrate-3.0.0.min.js' %}"></script>
+<script src="{% static 'popcorn/js/mmenu.min.js' %}"></script>
+<script src="{% static 'popcorn/js/tippy.all.min.js' %}"></script>
+<script src="{% static 'popcorn/js/simplebar.min.js' %}"></script>
+<script src="{% static 'popcorn/js/bootstrap-slider.min.js' %}"></script>
+<script src="{% static 'popcorn/js/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'popcorn/js/snackbar.js' %}"></script>
+<script src="{% static 'popcorn/js/clipboard.min.js' %}"></script>
+<script src="{% static 'popcorn/js/counterup.min.js' %}"></script>
+<script src="{% static 'popcorn/js/magnific-popup.min.js' %}"></script>
+<script src="{% static 'popcorn/js/slick.min.js' %}"></script>
+<script src="{% static 'popcorn/js/typed.js' %}"></script>
+<script src="{% static 'popcorn/js/custom_jquery.js' %}"></script>
+<script>
+if ($('.utf-intro-banner-search-form-block')[0]) {
+	setTimeout(function(){
+		$(".pac-container").prependTo(".utf-intro-search-field-item.with-autocomplete");
+	}, 300);
+}
+</script>
+<script>
+let typed = new Typed('.typed-words', {
+	strings: ["Electrical Engineers","Architects", "Pharmacists","Agriculturist","Social Workers"],
+	typeSpeed: 80,
+	backSpeed: 80,
+	backDelay: 4000,
+	startDelay: 1000,
+	loop: true,
+	showCursor: true
+});
+</script>
+
+{% block ajax_script %}{% endblock %}
+</body>
+</html>

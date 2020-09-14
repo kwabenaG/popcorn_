@@ -1,0 +1,333 @@
+{% extends 'base_account.html' %}
+{% load static %}
+
+{% block title %}
+    Sign Up | Popcorn
+{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 offset-xl-3">
+          {# error messages #}
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="notification warningcloseable" style="margin:10px;">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="notification warning closeable" style="margin:10px;">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        <div class="utf-login-register-page-aera margin-bottom-50 margin-top-30">
+          <div class="utf-welcome-text-item">
+            <h3>Create Your New Account!</h3>
+            <span>Don't Have an Account? <a href="login.html">Log In!</a></span>
+		  </div>
+          <form action="{% url 'account_signup' %}" method="post">
+              {% csrf_token %}
+            <div class="utf-no-border">
+                {{ form.username}}
+            </div>
+			<div class="utf-no-border">
+                {{ form.email }}
+            </div>
+
+            <div class="utf-no-border">
+                {{ form.password1 }}
+            </div>
+            <div class="utf-no-border">
+                {{ form.password2 }}
+            </div>
+			<div class="checkbox margin-top-10">
+{#				<input type="checkbox" id="two-step0">#}
+				<label for="two-step0"> By Registering You Confirm That You Accept <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+		    </div>
+              <button type="submit" class="button full-width utf-button-sliding-icon ripple-effect margin-top-10" >Create An Account <i class="icon-feather-chevrons-right"></i></button>
+          </form>
+
+          <div class="utf-social-login-separator-item"><span>or</span></div>
+          <div class="utf-social-login-buttons-block">
+            <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Facebook</button>
+			<button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Google+</button>
+			<button class="twitter-login ripple-effect"><i class="icon-brand-twitter"></i> Twitter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{#{% block content %}#}
+{#    {% include 'account/header_wrapper/header_account_wrapper.html' %}#}
+{#    <!-- jp register wrapper start -->#}
+{#    <div class="register_section">#}
+{##}
+{#        <!-- register_form_wrapper -->#}
+{#        <div class="register_tab_wrapper">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{##}
+{#                    <div class="col-md-10 col-md-offset-1">#}
+                        {# error messages #}
+{#                        {% if form.errors %}#}
+{#                            {% for field in form %}#}
+{#                                {% for error in field.errors %}#}
+{#                                    <div class="alert alert-danger" role="alert">#}
+{#                                        <strong>{{ error|escape }}</strong>#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            {% endfor %}#}
+{#                            {% for error in form.non_field_errors %}#}
+{#                                <div class="alert alert-danger" role="alert" >#}
+{#                                    <strong>{{ error|escape }}</strong>#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+{#                        {% endif %}#}
+{##}
+{#                        <h1 style="padding-bottom: 6px;"> REGISTER ACCOUNT</h1>#}
+{#                        <div role="tabpanel">#}
+{##}
+{#                            <!-- Nav tabs -->#}
+{#                            <ul id="tabOne" class="nav register-tabs">#}
+{#                                <li class="active"><a href="#contentOne-1" data-toggle="tab">Personal Account <br> <span>i am looking for intern opportunities</span></a>#}
+{#                                </li>#}
+{#                                <li><a href="#contentOne-2" data-toggle="tab">company account <br> <span>We are hiring Employees</span></a>#}
+{#                                </li>              seller account#}
+{#                            </ul>#}
+{##}
+{#                            <!-- Tab panes -->#}
+{#                            <div class="tab-content">#}
+{#                                <div class="tab-pane fade in active register_left_form" id="contentOne-1">#}
+{##}
+{#                                    <div class="jp_regiter_top_heading">#}
+{##}
+{#                                    </div>#}
+{#                                    <div class="row">#}
+{#                                        <form action="{% url 'account_signup' %}" method="post">#}
+{#                                            {% csrf_token %}#}
+{#                                            <!--Form Group-->#}
+{#                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{#                                                {{ form.username }}#}
+{#                                            </div>#}
+{##}
+{#                                            <!--Form Group-->#}
+{#                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{#                                                {{ form.emails}}#}
+{#                                            </div>#}
+{#                                            <!--Form Group-->#}
+{#                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{##}
+{#                                                <input type="password" class="form-control" name={{ form.password1.name }} placeholder='Password' required id='id_password1'>#}
+{#                                            </div>#}
+{#                                            <!--Form Group-->#}
+{#                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{#                                                <input type="password" class="form-control" name={{ form.password2.name }}#}
+{#                                                        placeholder='Confirm Password' required id='id_password2'>#}
+{#                                            </div>#}
+{#                                            <!--Form Group-->#}
+{##}
+{##}
+{#                                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                                                <div class="check-box text-center">#}
+{#                                                    <label for="account-option_1">By signing up you are agreeing to our <a href="#" class="check_box_anchr">Terms and Conditions</a> governing the use of intern portal</label>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="login_btn_wrapper register_btn_wrapper login_wrapper ">#}
+{#                                                <button class="btn btn-primary login_btn"> Register </button>#}
+{#                                            </div>#}
+{#                                        </form>#}
+{#                                        <div class="login_message">#}
+{#                                            <p>Already a member? <a href="{% url 'account_login' %}"> Login Here </a> </p>#}
+{#                                        </div>#}
+{##}
+{#                                    </div>#}
+{#                                </div>#}
+                                {#    company registration starts here #}
+{#                                </div>#}
+{#                            <p class="btm_txt_register_form">In case you are using a public/shared computer we recommend that you logout to prevent any un-authorized access to your account</p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- jp register wrapper end -->#}
+{##}
+{#{% endblock %}#}
+                                    {#  start of company forms  #}
+{#                                <div class="tab-pane fade register_left_form" id="contentOne-2">#}
+{#                                    <div class="jp_regiter_top_heading">#}
+{#                                        <p>Fields with * are mandetory </p>#}
+{#                                    </div>#}
+{#                                    <div class="row clearfix">#}
+{#                                        <!--Form Group-->#}
+{#                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{#                                            <input type="text" name="field-name" value="" placeholder="Username*">#}
+{#                                        </div>#}
+{#                                        <!--Form Group-->#}
+{#                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{#                                            <input type="text" name="field-name" value="" placeholder="Email*">#}
+{#                                        </div>#}
+{#                                        <!--Form Group-->#}
+{#                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{##}
+{#                                            <input type="password" name="field-name" value="" placeholder="password*">#}
+{#                                        </div>#}
+{#                                        <!--Form Group-->#}
+{#                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{##}
+{#                                            <input type="password" name="field-name" value="" placeholder="re-enter password*">#}
+{#                                        </div>#}
+{##}
+{#                                        <!--Form Group-->#}
+{#                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{##}
+{#                                            <input type="text" name="field-name" value="" placeholder="phone">#}
+{#                                        </div>#}
+{##}
+{#                                        <!--Form Group-->#}
+{#                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{##}
+{#                                            <input type="text" name="field-name" value="" placeholder="company name">#}
+{##}
+{#                                        </div>#}
+{##}
+{#                                        <!--Form Group-->#}
+{#                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{##}
+{#                                            <input type="text" name="field-name" value="" placeholder="website">#}
+{##}
+{#                                        </div>#}
+{#                                        <!--Form Group-->#}
+{#                                        <div class="form-group col-md-6 col-sm-6 col-xs-12">#}
+{##}
+{#                                            <input type="text" name="field-name" value="" placeholder="address line">#}
+{#                                        </div>#}
+{##}
+{#                                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                                            <div class="check-box text-center">#}
+{#                                                <input type="checkbox" name="shipping-option" id="account-option_2"> &ensp;#}
+{#                                                <label for="account-option_2">I agreed to the <a href="#" class="check_box_anchr">Terms and Conditions</a> governing the use of jobportal</label>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <div class="login_btn_wrapper register_btn_wrapper login_wrapper ">#}
+{#                                        <a href="#" class="btn btn-primary login_btn"> register </a>#}
+{#                                    </div>#}
+{#                                    <div class="login_message">#}
+{#                                        <p>Already a member? <a href="#"> Login Here </a> </p>#}
+{#                                    </div>#}
+{##}
+{#                                </div>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {# start of tag  #}
+{#    <div class="account-page">#}
+{#        <div class="container">#}
+{#            <h3 class="account-title">INTERN HOOKS</h3>#}
+{#            <div class="account-box">#}
+{#                <div class="account-wrapper">#}
+{##}
+{#                    <div class="account-logo">#}
+{#                        <a href="#"><img src="{% static 'img/logo2.png' %}"  width="50" height="100" alt="intern hooks"></a>#}
+{#                    </div>#}
+                    {#          error messages           #}
+{#                    {% if form.errors %}#}
+{#                        {% for field in form %}#}
+{#                            {% for error in field.errors %}#}
+{#                                <div class="alert alert-error text-danger" style="padding:1px">#}
+{#                                    <strong>{{ error|escape }}</strong>#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+{#                        {% endfor %}#}
+{#                        {% for error in form.non_field_errors %}#}
+{#                            <div class="alert alert-error text-danger" style="padding:1px">#}
+{#                                <strong>{{ error|escape }}</strong>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
+{##}
+{#                    <form action="{% url 'account_signup' %}" method="post">#}
+{#                        {% csrf_token %}#}
+{##}
+{#                        <div class="form-group form-focus">#}
+{#                            <label class="control-label" id="forms.id_for_label">Username</label>#}
+{#                            {{ form.username }}#}
+{#                        </div>#}
+{#                        <div class="form-group form-focus">#}
+{#                            <label class="control-label" for="id_email">Email</label>#}
+{#                            {{ form.emails }}#}
+{#                        </div>#}
+{##}
+{#                        <div class="form-group form-focus">#}
+{#                            <label class="control-label" for="id_password1">Password</label>#}
+{#                                <input type="password" class="form-control floating"#}
+{#                                   name={{ form.password1.name }} required id='id_password1'>#}
+{#                        </div>#}
+{##}
+{#                        <div class="form-group form-focus">#}
+{#                            <label class="control-label" for="id_password2">Repeat Password</label>#}
+{#                            <input type="password" class="form-control floating"#}
+{#                                   name={{ form.password2.name }} required id='id_password2'>#}
+{#                        </div>#}
+{#                        <div class="form-group text-center">#}
+{#                            <button class="btn btn-primary btn-block account-btn" type="submit">Register</button>#}
+{#                        </div>#}
+{#                        <div class="text-center">#}
+{#                            <a href="{% url 'account_login' %}">Already have an account?</a>#}
+{#                        </div>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+    {#   end of registration tag  #}
+        {#    <form action="{% url 'account_signup' %}" method="post">#}
+        {#        {% csrf_token %}#}
+        {#        {% for field in form %}#}
+        {#            {{ field}}#}
+        {#        {% endfor %}#}
+        {##}
+        {#        {{ form.as_p}}#}
+        {#        <button type="submit">Sign Up</button>#}
+        {#    </form>#}
+

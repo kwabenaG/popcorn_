@@ -1,0 +1,109 @@
+
+
+<!-- Sign In Popup -->
+<div id="utf-signin-dialog-block" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+  <div class="utf-signin-form-part">
+    <ul class="utf-popup-tabs-nav-item">
+      <li><a href="#login">Log In</a></li>
+      <li><a href="#register">Register</a></li>
+    </ul>
+    <div class="utf-popup-container-part-tabs">
+      <!-- Login -->
+      <div class="utf-popup-tab-content-item" id="login">
+
+          {# error messages #}
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger" role="alert" style="margin:10px;">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert"  style="margin:10px;">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        <div class="utf-welcome-text-item">
+          <h3>Welcome Back Sign in to Continue</h3>
+          <span>Don't Have an Account? <a href="#" class="register-tab">Sign Up!</a></span>
+		</div>
+        <form action="{% url 'account_login' %}" method="post" id="login-form">
+            {% csrf_token %}
+          <div class="utf-no-border">
+            <input type="text" class="utf-with-border" name="login" id="emailaddress" placeholder="Email or Username" required/>
+          </div>
+          <div class="utf-no-border">
+            <input type="password" class="utf-with-border" name="password" id="password" placeholder="Password" required/>
+          </div>
+{#		  <div class="checkbox margin-top-0">#}
+{#			<input type="checkbox" id="two-step">#}
+{#			<label for="two-step"><span class="checkbox-icon"></span> Remember Me</label>#}
+{#		  </div>#}
+          <a href="{% url 'account_reset_password' %}" class="forgot-password">Forgot Password?</a>
+        </form>
+        <button class="button full-width utf-button-sliding-icon ripple-effect" type="submit" form="login-form">Log In <i class="icon-feather-chevrons-right"></i></button>
+        <div class="utf-social-login-separator-item"><span>or</span></div>
+        <div class="utf-social-login-buttons-block">
+          <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Facebook</button>
+		  <button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Google+</button>
+		  <button class="twitter-login ripple-effect"><i class="icon-brand-twitter"></i> Twitter</button>
+        </div>
+      </div>
+
+      <!-- Register -->
+      <div class="utf-popup-tab-content-item" id="register">
+          {# error messages #}
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger" role="alert" style="margin:10px;">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert"  style="margin:10px;">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        <div class="utf-welcome-text-item">
+          <h3>Create your Account!</h3>
+		  <span>Don't Have an Account? <a href="#" class="register-tab">Sign Up!</a></span>
+        </div>
+        <form action="{% url 'account_signup' %}" method="post" id="utf-register-account-form">
+            {% csrf_token %}
+          <div class="utf-no-border">
+            <input type="text" class="utf-with-border" name="username" id="id_username" placeholder="User Name" required/>
+          </div>
+		  <div class="utf-no-border">
+            <input type="text" class="utf-with-border" name="email" id=id_email placeholder="Email Address" required/>
+          </div>
+
+          <div class="utf-no-border" title="Should be at least 8 characters long" data-tippy-placement="bottom">
+            <input type="password" class="utf-with-border" name="password1" id="id_password1" placeholder="Password" required/>
+          </div>
+          <div class="utf-no-border">
+            <input type="password" class="utf-with-border" name="password2" id="id_password2" placeholder="Repeat Password" required/>
+          </div>
+		  <div class="checkbox margin-top-0">
+			<input type="checkbox" id="two-step0">
+			<label for="two-step0"> By Registering You Confirm That You Accept <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+		  </div>
+        </form>
+        <button class="margin-top-10 button full-width utf-button-sliding-icon ripple-effect" type="submit" form="utf-register-account-form">Register <i class="icon-feather-chevrons-right"></i></button>
+        <div class="utf-social-login-separator-item"><span>or</span></div>
+        <div class="utf-social-login-buttons-block">
+          <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Facebook</button>
+		  <button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Google+</button>
+		  <button class="twitter-login ripple-effect"><i class="icon-brand-twitter"></i> Twitter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Sign In Popup / End -->

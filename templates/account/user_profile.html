@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Homepage Profile
+{% endblock %}
+
+
+{% block content %}
+    <h3> Profile body</h3>
+    {{ user.username }}
+    <form action="{% url 'userprofile' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for user in user_forms %}
+            {{ user }}
+        {% endfor %}
+        {% for profile in profile_forms %}
+
+            {{ profile }}
+        {% endfor %}
+        <button type="submit" name="Update">Update</button>
+    </form>
+
+
+{% endblock %}

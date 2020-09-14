@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile | POPCORN {% endblock %}
+
+{% block content %}
+
+    <div class="utf-dashboard-content-inner-aera">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="dashboard-box margin-top-0 margin-bottom-30">
+              <div class="headline">
+                <h3>My Profile Details | POPCORN</h3>
+              </div>
+              <div class="content with-padding padding-bottom-0">
+                <div class="row">
+                    <form action="{% url 'edit_user_profile' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="col">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="row">
+                                    <div class="col-xl-2 col-md-2 col-sm-2">
+                                        <div class="utf-avatar-wrapper" data-tippy-placement="top" title="Change Profile Picture">
+                                            <img class="profile-pic" src="{% static 'popcorn/images/user-avatar-placeholder.png' %}" alt="" />
+                                        <div class="upload-button"></div>
+                                            <input class="file-upload" type="file" name={{ profile_forms.profile_img.name }} accept="image/*"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="row">
+                                    <div class="col-xl-6 col-md-6 col-sm-6">
+                                        <div class="utf-submit-field">
+                                            <h5>Username</h5>
+                                            <input type="text" class="utf-with-border" name= "{{ user_forms.username.name }}" value={{ user_profile_data.userCreated.username}}>
+                                        </div>
+                                    </div>
+                                     <div class="col-xl-6 col-md-6 col-sm-6">
+                                        <div class="utf-submit-field">
+                                            <h5>Student Number</h5>
+                                            {{ profile_forms.student_number }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field">
+                                    <h5>First Name</h5>
+                                    {{ user_forms.first_name}}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field">
+                                    <h5>Last Name</h5>
+                                    {{ user_forms.last_name}}
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field">
+                                    <h5>Phone Number</h5>
+                                    {{ profile_forms.phone_number }}
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field">
+                                    <h5>Email Address</h5>
+                                    <input type="text"  name = {{ user_forms.email.name }} class="utf-submit-field" value={{ user_profile_data.userCreated.email }}>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field">
+                                    <h5>Gender</h5>
+                                    {{ profile_forms.gender }}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field datepicker">
+                                    <h5> Birth Date</h5>
+                                    {{ profile_forms.dob }}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field">
+                                    <h5>Country</h5>
+                                    {{ profile_forms.country }}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field">
+                                  <h5> Region</h5>
+                                  {{ profile_forms.region}}
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-md-6 col-sm-6">
+                                <span style="{margin:5px}" class="text-muted"><strong>EDUCATION</strong></span>
+                                <div class="utf-submit-field">
+                                    <h5>School (Current Institution Attended)</h5>
+                                    {{ profile_forms.school }}
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                                <div class="utf-submit-field">
+                                  <h5>Qualification</h5>
+                                    {{ profile_forms.qualification }}
+                                </div>
+                            </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="utf-submit-field">
+                              <h5>Program Of Study</h5>
+                              {{ profile_forms.program }}
+                            </div>
+                          </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="utf-submit-field">
+                              <h5>Start Date </h5>
+                              {{ profile_forms.start_program}}
+                            </div>
+                          </div>
+                            <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="utf-submit-field">
+                              <h5>Complete Date</h5>
+                               {{ profile_forms.complete_program }}
+                            </div>
+                          </div>
+                            <div class="col-xl-12 col-md-6 col-sm-6">
+                                <span style="{margin:5px}" class="text-muted"><strong>WORK HISTORY</strong></span>
+                            <div class="utf-submit-field">
+                              <h5>Company</h5>
+                                {{ profile_forms.company_name }}
+                            </div>
+                          </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="utf-submit-field">
+                                <h5>Company Location</h5>
+                                {{ profile_forms.company_location }}
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="utf-submit-field">
+                            <h5>Work </h5>
+                            {{ profile_forms.job_position}}
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="utf-submit-field">
+                                <h5>Period from</h5>
+                                {{ profile_forms.job_position_period_from }}
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6">
+                            <div class="utf-submit-field">
+                              <h5>Position Periods</h5>
+                              {{  profile_forms.job_position_period_to }}
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-6">
+                            <h5>Curriculum Vitae</h5>
+                            {{ profile_forms.resume }}
+    {#                        <span class="uploadButton-file-name">Upload Resume (Docx, Doc, PDF) File.</span>#}
+                        </div>
+                        </div>
+                      </div>
+                        <button type="submit" class="button ripple-effect big margin-top-10 margin-bottom-20">Save Changes</button>
+                    </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+{#          <div class="col-xl-6">#}
+{#            <div id="test1" class="dashboard-box margin-top-0">#}
+{#              <div class="headline">#}
+{#                <h3>Change Password</h3>#}
+{#              </div>#}
+{#              <div class="content with-padding">#}
+{#                <div class="row">#}
+{#                  <div class="col-xl-12 col-md-6 col-sm-6">#}
+{#                    <div class="utf-submit-field">#}
+{#                      <h5>Current Password</h5>#}
+{#                      <input type="password" class="utf-with-border" title="Current Password" data-tippy-placement="top" placeholder="********">#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div class="col-xl-12 col-md-6 col-sm-6">#}
+{#                    <div class="utf-submit-field">#}
+{#                      <h5>New Password</h5>#}
+{#                      <input type="password" class="utf-with-border" title="The password must be at least 8 characters" data-tippy-placement="top" placeholder="********">#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div class="col-xl-12 col-md-6 col-sm-6">#}
+{#                    <div class="utf-submit-field">#}
+{#                      <h5>Confirm New Password</h5>#}
+{#                      <input type="password" class="utf-with-border" title="The password must be at least 8 characters" data-tippy-placement="top" placeholder="********">#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#				<a href="javascript:void(0);" class="button ripple-effect big margin-top-10">Changes Password</a>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+    </div>
+
+    <!-- Dashboard Content / End -->
+    </div>
+
+{% endblock %}
